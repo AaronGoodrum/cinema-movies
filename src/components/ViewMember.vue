@@ -1,13 +1,26 @@
 <template>
-  <div id="view-members">
-    <h3>View Members</h3>    
+  <div id="view-member">
+    <h3>View Member</h3>
+    <ul class="collection with-header">
+      <li class="collection-header">
+        <h4>{{name}}</h4>
+      </li>
+      <li class="collection-item">Employee ID#:
+        {{member_id}}</li>
+              <li class="collection-item">Employee Email:
+        {{email}}</li>
+    </ul>
+    <!-- Back to Dashboard / Delete member -->
+    <router-link to="/" class="btn grey">Back</router-link>
+    <!-- METHODS //  shorthand used of @click from v-on:click, Event Handling -->
+    <button v-on:click="deleteMember" class="btn red">Delete</button>
   </div>  
 </template>
 
 <script>
 import db from './firebaseInit'
 export default {
-  name: 'view-members',
+  name: 'view-member',
   data () {
     return{
      member_id: null,
@@ -15,13 +28,14 @@ export default {
      email: null 
     }
   },
+  // Used member_id from Dashboard
   beforeRouteEnter: (to, from, next) => {
-    db.collection('members').where('member_id',
+    db.collection('members').where('members_id',
     '==', to.params.member_id).get()
       .then(querySnapshot => {
         querySnapshot.forEach(doc => {
           next(vm => {
-            vm.member_id = doc.data().member_id
+            vm.member_id = doc.data().members_id
             vm.name = doc.data().name
             vm.email = doc.data().email
           })
@@ -34,13 +48,26 @@ export default {
   methods: {
     fetchData () {
       db.collection('members').where
-      ('member_id', '==', this.$route.params.member_id)
+      ('members_id', '==', this.$route.params.member_id)
       .get()
         .then(querySnapshot => {
           querySnapshot.forEach(doc => {
             this.member_id = doc.data().member_id
           })
         })
+    }, 
+     // if @click delete Member need to remove form firebase db
+    deleteMember () {
+      if(confirm('Are you sure?')) {
+        db.collection('members').where('members_id', '==',
+        this.$route.params.member_id).get()
+        .then(querySnapshot => {
+          querySnapshot.forEach(doc => {
+            doc.ref.delete()
+            this.$router.push('/')
+          })
+        })
+      }
     }
   }
 }

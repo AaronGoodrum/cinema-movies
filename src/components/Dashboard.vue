@@ -4,19 +4,21 @@
       <li class="collection-header">
         <h4>Employees</h4>
       </li>
+      <!-- Loop all member in DB from firebase -->
       <li v-for="member in members" 
       v-bind:key="member.id"
       class="collection-item">
-      <div class="chip">{{member.member_id}}</div>
+      <div class="chip">{{member.members_id}}</div>
       {{member.name}} : {{member.eMail}}
       
+      <!-- Router link to "member ID #" with member_id to edit member -->
       <router-link class="secondary-content"
-      v-bind:to="{name: 'view-member', params:{member_id:member.member_id}}">
+      v-bind:to="{name: 'view-member', params:{member_id:member.members_id}}">
       <i class="fa fa-eye"></i>
       </router-link>
       </li>
     </ul>
-
+<!-- used router link to Add a NEW member -->
     <div class="fixed-action-btn">
       <router-link to="/new" class="btn-floating btn-large red">
       <i class="fa fa-plus"></i>
@@ -42,7 +44,7 @@ export default {
       querySnapshot.forEach(doc => {
         const data = {
           'id': doc.id,
-          'member_id': doc.data().members_id,
+          'members_id': doc.data().members_id,
           'name': doc.data().name,
           'eMail': doc.data().email
         }
