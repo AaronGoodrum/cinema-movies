@@ -1,12 +1,12 @@
 <template>
-  <div id="view-employee">
-    <h3>View Employee</h3>    
+  <div id="new-member">
+    <h3>New Member</h3>    
   </div>  
 </template>
 
 <<script>
 export default {
-  name: 'view-employee',
+  name: 'new-member',
   data () {
     return{
       

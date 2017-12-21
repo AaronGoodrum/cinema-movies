@@ -1,12 +1,12 @@
 <template>
-  <div id="edit-employee">
-    <h3>Edit Employee</h3>    
+  <div id="edit-member">
+    <h3>Edit Member</h3>    
   </div>  
 </template>
 
 <<script>
 export default {
-  name: 'edit-employee',
+  name: 'edit-member',
   data () {
     return{
       

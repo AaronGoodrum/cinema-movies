@@ -1,9 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
-import NewEmployee from '@/components/NewEmployee'
-import ViewEmployee from '@/components/ViewEmployee'
-import EditEmployee from '@/components/EditEmployee'
+import Movielist from '@/components/MovieList'
+import Newmember from '@/components/NewMember'
+import Viewmember from '@/components/ViewMember'
+import Editmember from '@/components/EditMember'
 
 Vue.use(Router)
 
@@ -15,19 +16,24 @@ export default new Router({
       component: Dashboard
     },
     {
+      path: '/movies',
+      name:'movie-list',
+      component: Movielist
+    },
+    {
       path: '/new',
-      name: 'new-employee',
-      component: NewEmployee
+      name: 'new-member',
+      component: Newmember
     },
     {
-      path: '/:employee_id',
-      name: 'view-employee',
-      component: ViewEmployee
+      path: '/:member_id',
+      name: 'view-member',
+      component: Viewmember
     },
     {
-      path: '/edit/:employee_id',
-      name: 'edit-employee',
-      component: EditEmployee
+      path: '/edit/:member_id',
+      name: 'edit-member',
+      component: Editmember
     }
   ]
 })
