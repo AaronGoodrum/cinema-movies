@@ -14,6 +14,16 @@
     <router-link to="/" class="btn grey">Back</router-link>
     <!-- METHODS //  shorthand used of @click from v-on:click, Event Handling -->
     <button v-on:click="deleteMember" class="btn red">Delete</button>
+
+    <!-- used router link to EDIT a NEW member -->
+    <div class="fixed-action-btn">
+      <router-link v-bind:to="{name: 'edit-member', 
+        params: {member_id: member_id}}" 
+      class="btn-floating btn-large red">
+      <i class="fa fa-pencil"></i>
+      </router-link>
+    </div>
+
   </div>  
 </template>
 

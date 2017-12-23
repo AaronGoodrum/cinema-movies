@@ -4,7 +4,7 @@
       <li class="collection-header">
         <h4>Employees</h4>
       </li>
-      <!-- Loop all member in DB from firebase -->
+      <!-- Loop all member in DB from -->
       <li v-for="member in members" 
       v-bind:key="member.id"
       class="collection-item">

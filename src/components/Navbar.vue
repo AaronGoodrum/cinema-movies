@@ -3,7 +3,7 @@
     <div class="nav-wrapper green lighten-3">
       <div class="container">
         <router-link to="/"
-         class="brand-logo"> Nav Bar vue
+         class="brand-logo"> Dashboard
         </router-link>
       </div>
     </div>
